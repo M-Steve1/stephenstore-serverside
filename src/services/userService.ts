@@ -6,11 +6,11 @@ const { jwtSecret } = env;
 
 export class UserService {
   async isUserNameTaken(user_name: string): Promise<boolean> {
+    let conn;
     try {
       const sql = 'SELECT user_name FROM users';
-      const conn = await client.connect();
+      conn = await client.connect();
       const result = await conn.query(sql);
-      conn.release();
       const userNames = result.rows;
       let isTaken = false;
       for (let i = 0; i < userNames.length; i++) {
@@ -22,7 +22,11 @@ export class UserService {
       return isTaken;
     } catch (error) {
       throw new Error(`Something went wrong ${error}`);
-    }
+    } finally {
+      if (conn !== undefined) {
+          conn.release();
+      }
+  }
   }
 
   async createToken(payload: object): Promise<string> {

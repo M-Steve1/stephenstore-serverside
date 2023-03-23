@@ -9,8 +9,8 @@ import { tokenAuth } from '../middleware/tokenAuth';
 
 const userRouter = express.Router();
 
-userRouter.get('/index', tokenAuth, index);
-userRouter.get('/show/:id', tokenAuth, getUserById);
+// userRouter.get('/index', index);
+// userRouter.get('/show/:id', getUserById);
 userRouter.post('/signup', createUser);
 userRouter.post('/signin', authenticate);
 

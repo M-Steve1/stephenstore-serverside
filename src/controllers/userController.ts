@@ -35,7 +35,7 @@ export const createUser = async (
     const { first_name, last_name, user_name, password } = req.body;
     const isTaken = await userService.isUserNameTaken(user_name);
     if (isTaken) {
-      throw new Error('Username is taken, choose another');
+      res.status(400).json('Username is taken, choose another');
     } else {
       const user: User = {
         first_name: first_name,
@@ -47,7 +47,7 @@ export const createUser = async (
       const createdUser = await userStore.create(user);
       const payload = { userId: createdUser.id as string };
       const token = await userService.createToken(payload);
-      res.status(201).json({ user: createdUser, token: token });
+      res.status(201).json({token: token, userId: createdUser.id, userName: createdUser.user_name});
     }
   } catch (error) {
     throw new Error(`Could not create a user: ${error}`);
@@ -63,8 +63,8 @@ export const authenticate = async (
     const signedInUser = await userStore.authenticate(user_name, password);
     const payload = { userId: signedInUser.id as string };
     const token = await userService.createToken(payload);
-    res.status(200).json({ user: signedInUser, token: token });
+    res.status(200).json({token: token, userId: signedInUser.id, userName: signedInUser.user_name});
   } catch (error) {
-    throw new Error(`Unable to login: ${error}`);
+    res.status(400).json(`${error}`);
   }
 };

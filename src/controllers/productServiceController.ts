@@ -20,6 +20,35 @@ export const productsByCategory = async (
   }
 };
 
+export const productByName = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const productName = req.params.name;
+    const product = await productService.getProductByName(productName);
+    if (product === undefined) {
+      res.status(400).json('Product does not exist');
+    } else {
+      res.status(200).json(product);
+    }
+  } catch (error) {
+    throw new Error(`${error}`);
+  }
+};
+
+export const allProductCategories = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const allCategories = await productService.allProductCategories();
+    res.status(200).json(allCategories);
+  } catch (error) {
+    throw new Error(`${error}`);
+  }
+};
+
 export const fiveMostPopularProducts = async (
   req: Request,
   res: Response

@@ -1,10 +1,8 @@
-import express from 'express';
-import { addProduct, create } from '../controllers/orderController';
-import { tokenAuth } from '../middleware/tokenAuth';
+import express from "express";
+import { createOrder } from "../controllers/orderController";
+import { idAuth } from "../middleware/idAuth";
+const orderRouter = express.Router();
 
-const orderRoute = express.Router();
+orderRouter.post('/create-order/:id', idAuth, createOrder);
 
-orderRoute.post('/create', tokenAuth, create);
-orderRoute.post('/:id/product', tokenAuth, addProduct);
-
-export default orderRoute;
+export default orderRouter;

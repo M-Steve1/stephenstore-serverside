@@ -15,6 +15,9 @@ export const tokenAuth = async (
     jwt.verify(token as string, jwtSecret as string);
     next();
   } catch (error) {
-    throw new Error(`Un-authorized: ${error}`);
+    //@ts-ignore
+    if (error.message === 'jwt expired') {
+      res.json('jwt expired');
+    }
   }
 };
