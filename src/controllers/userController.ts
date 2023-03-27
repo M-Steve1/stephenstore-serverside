@@ -20,7 +20,7 @@ export const getUserById = async (
 ): Promise<void> => {
   try {
     const userId = req.params.id;
-    const theUser = await userStore.show(userId);
+    const theUser = await userStore.show(parseInt(userId));
     res.status(200).json(theUser);
   } catch (error) {
     throw new Error(`Cannot get the user: ${error}`);
@@ -45,9 +45,9 @@ export const createUser = async (
       };
 
       const createdUser = await userStore.create(user);
-      const payload = { userId: createdUser.id as string };
+      const payload = { userId: createdUser?.id };
       const token = await userService.createToken(payload);
-      res.status(201).json({token: token, userId: createdUser.id, userName: createdUser.user_name});
+      res.status(201).json({token: token, userId: createdUser?.id, userName: createdUser?.user_name});
     }
   } catch (error) {
     throw new Error(`Could not create a user: ${error}`);
@@ -61,9 +61,9 @@ export const authenticate = async (
   try {
     const { user_name, password } = req.body;
     const signedInUser = await userStore.authenticate(user_name, password);
-    const payload = { userId: signedInUser.id as string };
+    const payload = { userId: signedInUser?.id };
     const token = await userService.createToken(payload);
-    res.status(200).json({token: token, userId: signedInUser.id, userName: signedInUser.user_name});
+    res.status(200).json({token: token, userId: signedInUser?.id, userName: signedInUser?.user_name});
   } catch (error) {
     res.status(400).json(`${error}`);
   }

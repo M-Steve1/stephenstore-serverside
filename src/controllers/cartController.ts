@@ -20,11 +20,11 @@ export const updateCartStatus = async (req: Request, res: Response): Promise<voi
         const {cartStatus} = req.body
         const user_id = req.params.id;
         const cart: Cart = {
-            user_id: user_id,
+            user_id: parseInt(user_id),
             status: cartStatus
         }
         const updatedCart = await cartStore.updateCartStatus(cart);
-        res.status(201).json(updatedCart);
+        res.status(200).json(updatedCart);
     } catch (error) {
         res.status(400).json("Could not update cart");
     }
@@ -33,12 +33,12 @@ export const updateCartStatus = async (req: Request, res: Response): Promise<voi
 export const addProductsToCart = async (req: Request, res: Response): Promise<void> => {
     try {
         const {cart_id, product_id, product_quantity} = req.body;
-        const isProductInCart = await cartService.isProductInCart({cart_id, product_id});
+        const isProductInCart = await cartService.isProductInCart(parseInt(cart_id), parseInt(product_id));
         if (isProductInCart === null || isProductInCart === undefined) {
             const addedProduct = await cartStore.addProductsToCart({cart_id, product_id, product_quantity});
-            res.status(201).json(addedProduct);
+            res.status(200).json(addedProduct);
         } else {
-            const updatedProduct = await cartStore.updateProductQuantity(isProductInCart.id as string, parseInt(isProductInCart.product_quantity as unknown as string) + parseInt(product_quantity));
+            const updatedProduct = await cartStore.updateProductQuantity(parseInt(isProductInCart.id as unknown as string), parseInt(isProductInCart.product_quantity as unknown as string) + parseInt(product_quantity));
             res.status(200).json(updatedProduct);
         }
        
@@ -51,7 +51,7 @@ export const updateProductQuantity = async (req: Request, res: Response): Promis
     try {
         const {id, product_quantity} = req.body;
       
-        const updatedProduct = await cartStore.updateProductQuantity(id, product_quantity);  
+        const updatedProduct = await cartStore.updateProductQuantity(parseInt(id), product_quantity);  
         res.status(200).json(updatedProduct);
     } catch (error) {
         res.status(400).json("Could not update product quantity");
@@ -61,7 +61,7 @@ export const updateProductQuantity = async (req: Request, res: Response): Promis
 export const removeItemFromCart = async (req: Request, res: Response): Promise<void> => {
     try {
         const id = req.params.id;
-        const deletedProduct = await cartStore.removeItemFromCart(id);
+        const deletedProduct = await cartStore.removeItemFromCart(parseInt(id));
         res.status(200).json(deletedProduct);
     } catch (error) {
         res.status(400).json("Could not delete item from cart");

@@ -1,11 +1,11 @@
-import client from '../database';
+import client  from '../database';
 import { hashSync, compare } from 'bcrypt';
 import envVariables from '../config';
 
 const { pepper, saltRounds } = envVariables;
 
 export type User = {
-  id?: string | number,
+  id?: number,
   first_name: string,
   last_name: string,
   user_name: string,
@@ -14,95 +14,77 @@ export type User = {
 
 export class UserStore {
   async index(): Promise<User[]> {
-    let conn;
     try {
-      const sql = 'SELECT id, first_name, last_name, user_name FROM users';
-      conn = await client.connect();
-      const result = await conn.query(sql);
-      conn.release();
-      return result.rows;
+      const { data, error, status } = await client
+      .from('users')
+      .select();
+      return data as User[];
     } catch (error) {
       throw new Error(`Cannot fetch users ${error}`);
-    } finally {
-      if (conn !== undefined) {
-          conn.release();
-      }
-  }
+    }
   }
 
-  async create(u: User): Promise<User> {
-    let conn;
+  async create(u: User): Promise<User | null> {
     try {
       const hashedPassword = hashSync(
         u.password + pepper,
         parseInt(saltRounds)
       );
-      const sql =
-        'INSERT INTO users(first_name, last_name, user_name, password) VALUES($1, $2, $3, $4) RETURNING *';
-      conn = await client.connect();
       // fName and lName to lowercase to allow naming consistency
-      const result = await conn.query(sql, [
-        u.first_name.toLowerCase(),
-        u.last_name.toLowerCase(),
-        u.user_name,
-        hashedPassword
-      ]);
-      const user = result.rows[0];
-      delete user.password;
-      return user;
+      const { data, error, status } = await client
+      .from('users')
+      .insert({first_name: u.first_name.toLowerCase(), last_name: u.last_name.toLowerCase(), user_name: u.user_name, password: hashedPassword})
+      .select()
+      .single();
+
+      if (data !== null) {
+        delete data.password
+        return data as User;
+      } else return null;
+      
     } catch (error) {
       throw new Error(`Cannot create user ${error}`);
-    } finally {
-      if (conn !== undefined) {
-          conn.release();
-      }
-  }
+    }
   }
 
-  async show(id: string): Promise<User> {
-    let conn;
+  async show(id: number): Promise<User | null> {
     try {
-      const sql =
-        'SELECT id, first_name, last_name, user_name FROM users WHERE id=($1)';
-      conn = await client.connect();
-      const result = await conn.query(sql, [id]);
-      const user = result.rows[0];
-      delete user.password;
-      return user;
+      const { data, error, status} = await client
+      .from("users")
+      .select()
+      .eq('id', id)
+      .single();
+      
+      if (data !== null) {
+        delete data.password;
+        return data as User;
+      } else return null;
     } catch (error) {
       throw new Error(`Cannot find user ${error}`);
-    } finally {
-      if (conn !== undefined) {
-          conn.release();
-      }
-  }
+    }
   }
 
-  async authenticate(user_name: string, password: string): Promise<User> {
-    let conn;
+  async authenticate(user_name: string, password: string): Promise<User | null> {
     try {
-      const sql = 'SELECT * FROM users WHERE user_name=($1)';
-      conn = await client.connect();
-      const result = await conn.query(sql, [user_name]);
+      const { data, error, status} = await client
+      .from('users')
+      .select()
+      .eq('user_name', user_name);
 
-      try {
-        const user = result.rows[0];
+      if (data !== null) {
+        const user = data[0];
         const correctPassword = await compare(password + pepper, user.password);
         if (correctPassword) {
           delete user.password;
-          return user;
+          return user as User;
         } else {
           throw new Error();
         }
-      } catch (error) {
-        throw new Error();
+      } else {
+        return null;
       }
     } catch (error) {
       throw new Error(`Something went wrong`);
-    } finally {
-      if (conn !== undefined) {
-          conn.release();
-      }
-  }
+    }
   }
 }

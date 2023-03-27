@@ -8,8 +8,8 @@ try {
   const userId = req.params.id;
   const {cartId, status} = req.body;
   const order: Order = {
-    userId: userId,
-    cartId: cartId,
+    user_id: parseInt(userId),
+    cart_id: parseInt(cartId),
     status: status
   }
   const createdOrder = await orderStore.createOrder(order);

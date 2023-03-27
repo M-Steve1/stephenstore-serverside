@@ -10,8 +10,8 @@ export const productsByCategory = async (
   try {
     const category = req.params.category;
     const products = await productService.productsByCategory(category);
-    if (products.length === 0) {
-      throw new Error('category does not exist');
+    if (products?.length === 0 || products === null) {
+      res.status(400).json('category does not exist');
     } else {
       res.status(200).json(products);
     }
@@ -27,7 +27,7 @@ export const productByName = async (
   try {
     const productName = req.params.name;
     const product = await productService.getProductByName(productName);
-    if (product === undefined) {
+    if (product === null || product?.length === 0) {
       res.status(400).json('Product does not exist');
     } else {
       res.status(200).json(product);
@@ -46,17 +46,5 @@ export const allProductCategories = async (
     res.status(200).json(allCategories);
   } catch (error) {
     throw new Error(`${error}`);
-  }
-};
-
-export const fiveMostPopularProducts = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
-  try {
-    const fiveMostPopular = await productService.fiveMostPopularProducts();
-    res.status(200).json(fiveMostPopular);
-  } catch (error) {
-    res.status(400).json(error);
   }
 };

@@ -22,7 +22,7 @@ describe('Product route', () => {
       .send({
         name: 'Jeans',
         price: 7000,
-        category: 'clothings'
+        category: 'clothing'
       })
       .expect(201);
   });

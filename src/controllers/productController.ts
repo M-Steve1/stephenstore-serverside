@@ -19,7 +19,7 @@ export const getProductById = async (
 ): Promise<void> => {
   try {
     const id = req.params.id;
-    const theProduct = await productStore.show(id);
+    const theProduct = await productStore.show(parseInt(id));
     res.status(200).json(theProduct);
   } catch (error) {
     res.status(400).json(`cannot get the product: ${error}`);
@@ -43,15 +43,20 @@ export const create = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-// use this code to populate your DB with products
-// data.forEach((d) => {
-//   const product: Product = {
-//     name: d.name,
-//     price: d.price,
-//     category: d.category,
-//     url: d.url,
-//     description: d.description
-//   }
+/*
+  use this code to populate your DB with products
+*/
 
-//   productStore.create(product);
-// })
+/*
+  data.forEach((d) => {
+  const product: Product = {
+    name: d.name,
+    price: d.price,
+    category: d.category,
+    url: d.url,
+    description: d.description
+  }
+
+  productStore.create(product);
+})
+*/

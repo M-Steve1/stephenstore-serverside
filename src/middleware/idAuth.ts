@@ -16,7 +16,7 @@ export const idAuth = async (
     const userId = parseInt(req.params.id);
 
     // @ts-ignore
-    if (userId !== decodedToken.userId) {
+    if (userId !== parseInt(decodedToken.userId)) {
       res.status(400).json('UserId does not match');
     } else {
       next();

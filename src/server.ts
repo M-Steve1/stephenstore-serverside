@@ -7,6 +7,7 @@ import cartRoute from './routes/cartRoute';
 import cors from 'cors';
 import cartServiceRoute from './routes/cartServiceRoute';
 import orderRouter from './routes/orderRoute';
+import serverless from 'serverless-http'
 
 const app: express.Application = express();
 const address = '0.0.0.0:3000';
@@ -22,4 +23,6 @@ app.listen(3000, () => {
   console.log(`Listen on ${address}`);
 });
 
-export default app;
+module.exports.handler = serverless(app);
+
+export default app

@@ -1,26 +1,20 @@
-import { Pool } from 'pg';
-import dbInfo from './config';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { Database } from './types/supabase';
+import  envVariables  from './config';
+const {supabaseUrl,  supabaseAnonKey, supabaseUrlTest, supabaseAnonKeyTest, env} = envVariables;
 
-const { host, envDB, user, password, port, testDB, env } = dbInfo;
+let client: SupabaseClient;
 
-let client;
-
-if (env === 'dev') {
-  client = new Pool({
-    host: host,
-    user: user,
-    database: envDB,
-    password: password,
-    port: port
-  });
-} else {
-  client = new Pool({
-    host: host,
-    user: user,
-    database: testDB,
-    password: password,
-    port: port
-  });
+if (env === "dev") {
+  client = createClient<Database>(
+  supabaseUrl as string,
+  supabaseAnonKey as string
+)
+} else  {
+  client = createClient<Database>(
+    supabaseUrlTest as string,
+    supabaseAnonKeyTest as string
+  )
 }
 
-export default client as Pool;
+export default client;

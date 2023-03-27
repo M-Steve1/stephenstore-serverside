@@ -1,73 +1,62 @@
-import client from "../database";
-
-export type Cart = {
-    id?: string | number,
-    user_id: string,
-    status: string
-}
+import client  from "../database";
+import { Cart, CartProduct } from "../models/cart";
 
 export class CartServiceStore {
-    async getCartByUserId(user_id: string): Promise<Cart> {
-        let conn;
+    async getCartByUserId(user_id: number): Promise<Cart | null> {
         try {
-            const sql = 'SELECT * FROM carts WHERE user_id=($1) AND status=($2)';
-            conn = await client.connect();
-            const result = await client.query(sql, [user_id, 'active']);
-            return result.rows[0];
+            const { data, error, status} = await client
+            .from("carts")
+            .select()
+            .match({user_id: user_id, status: 'active'})
+
+            if (data !== null) return data[0] as Cart;
+            else return null;
         } catch (error) {
             throw new Error(`${error}`);
-        } finally {
-            if (conn !== undefined) {
-                conn.release();
-            }
         }
     }
 
-    async isProductInCart(productInCart: {cart_id: string, product_id: string}): Promise<{id: string | number, cart_id: string, product_id: string, product_quantity: number}> {
-        let conn;
+    async isProductInCart(cart_id: number, product_id: number): Promise<CartProduct | null> {
         try {
-            const sql = 'SELECT * FROM cart_products WHERE cart_id=($1) AND product_id=($2)';
-            conn = await client.connect();
-            const result = await client.query(sql, [productInCart.cart_id, productInCart.product_id]);
-            return result.rows[0];
+            const { data, error, status} = await client
+            .from("cart_products")
+            .select()
+            .match({cart_id: cart_id, product_id: product_id});
+
+            if (data !== null) return data[0] as CartProduct;
+            else return null;
         } catch (error) {
             throw new Error(`${error}`);
-        } finally {
-            if (conn !== undefined) {
-                conn.release();
-            }
         }
     }
 
-    async getProductsInCart(cart_id: string): Promise<{id: string | number, cart_id: string, product_id: string, product_quantity: number}[]> {
-        let conn;
+    async getProductsInCart(cart_id: number): Promise<CartProduct[] | null> {
         try {
-            const sql = 'SELECT * FROM cart_products WHERE cart_id=($1)';
-            conn = await client.connect();
-            const result = await client.query(sql, [cart_id]);
-            return result.rows;
+            const { data, error, status} = await client
+            .from("cart_products")
+            .select()
+            .eq("cart_id", cart_id)
+         
+            if (data !== null) return data as CartProduct[];
+            else return null;
         } catch (error) {
             throw new Error(`${error}`);
-        } finally {
-            if (conn !== undefined) {
-                conn.release();
-            }
         }
     }
 
-    async countProductsInCart(cart_id: string): Promise<{count: number}> {
-        let conn;
+    async countProductsInCart(cart_id: number): Promise<{count: number} | null> {
         try{
-          const sql = 'SELECT COUNT (*) AS count FROM cart_products WHERE cart_id=($1)';
-          conn = await client.connect();
-          const result = await client.query(sql, [cart_id]);
-          return result.rows[0];
+            const { count, error} = await client
+            .from('cart_products')
+            .select('*', { count: 'exact', head: true })
+            .eq('cart_id', cart_id);
+
+            const cartCount = { count: count }
+
+            if (count !== null) return cartCount as { count: number };
+            else return null;
         } catch(err) {
           throw new Error(`Something went wrong ${err}`);
-        } finally {
-          if (conn !== undefined) {
-              conn.release();
-          }
-      }
+        }
       }
 }

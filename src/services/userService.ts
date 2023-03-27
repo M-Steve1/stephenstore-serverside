@@ -1,32 +1,26 @@
-import client from '../database';
+import  client  from '../database';
 import jwt from 'jsonwebtoken';
 import env from '../config';
 
 const { jwtSecret } = env;
 
 export class UserService {
-  async isUserNameTaken(user_name: string): Promise<boolean> {
-    let conn;
+  async isUserNameTaken(user_name: string): Promise<boolean | null> {
     try {
-      const sql = 'SELECT user_name FROM users';
-      conn = await client.connect();
-      const result = await conn.query(sql);
-      const userNames = result.rows;
-      let isTaken = false;
-      for (let i = 0; i < userNames.length; i++) {
-        if (user_name === userNames[i].user_name) {
-          isTaken = true;
-          break;
-        }
+      const { data, error, status} = await client
+      .from('users')
+      .select("user_name")
+      .eq("user_name", user_name);
+
+      if (data !== null) {
+        if (data.length === 0) return false
+        else return true
+      } else {
+        return null;
       }
-      return isTaken;
     } catch (error) {
       throw new Error(`Something went wrong ${error}`);
-    } finally {
-      if (conn !== undefined) {
-          conn.release();
-      }
-  }
+    }
   }
 
   async createToken(payload: object): Promise<string> {

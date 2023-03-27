@@ -2,7 +2,7 @@ CREATE TABLE products(
     id SERIAL PRIMARY KEY,
     name text,
     price decimal,
-    category VARCHAR(100),
+    category text,
     url text,
     description text
 );
