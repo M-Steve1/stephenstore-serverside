@@ -13,5 +13,9 @@ cartServiceRoute.get('/products-in-cart/:id', tokenAuth, getProductsInCart);
 cartServiceRoute.post('/show-product-cart', tokenAuth, isProductInCart);
 cartServiceRoute.get('/count-products-in-cart/:id', tokenAuth, countProductsInCart);
 
+cartServiceRoute.get('/happy', (_req, res) => {
+    res.json({Message: "Thank God"})
+  })
+
 export default cartServiceRoute;
 

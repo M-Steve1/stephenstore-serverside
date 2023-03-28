@@ -13,5 +13,8 @@ cartRoute.post('/add-product', tokenAuth_1.tokenAuth, cartController_1.addProduc
 cartRoute.put('/update-cart-status/:id', idAuth_1.idAuth, cartController_1.updateCartStatus);
 cartRoute.put('/update-product-quantity', tokenAuth_1.tokenAuth, cartController_1.updateProductQuantity);
 cartRoute.delete('/delete/:id', tokenAuth_1.tokenAuth, cartController_1.removeItemFromCart);
+cartRoute.get('/happy', (_req, res) => {
+    res.json({ Message: "Thank God" });
+});
 exports.default = cartRoute;
 //# sourceMappingURL=cartRoute.js.map

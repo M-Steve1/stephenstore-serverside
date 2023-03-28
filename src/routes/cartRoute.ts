@@ -11,5 +11,9 @@ cartRoute.put('/update-cart-status/:id', idAuth, updateCartStatus);
 cartRoute.put('/update-product-quantity', tokenAuth, updateProductQuantity);
 cartRoute.delete('/delete/:id', tokenAuth, removeItemFromCart);
 
+cartRoute.get('/happy', (_req, res) => {
+    res.json({Message: "Thank God"})
+  })
+
 export default cartRoute;
 

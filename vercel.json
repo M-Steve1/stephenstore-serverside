@@ -9,12 +9,73 @@
     ],
     "routes": [
         {
-            "src": "/(.*)",
-            "dest": "dist/server.js"
-        },
-        {
             "src": "/user(.*)",
             "dest": "dist/routes/userRoute.js"
+        },
+        {
+            "src": "/order(.*)",
+            "dest": "dist/routes/orderRoute.js"
+        },
+        {
+            "src": "/product/index",
+            "dest": "dist/routes/productRoute.js"
+        },
+        {
+            "src": "/product/show/:id",
+            "dest": "dist/routes/productRoute.js"
+        },
+        {
+            "src": "/product/create",
+            "dest": "dist/routes/productRoute.js"
+        },
+        {
+            "src": "/product/category/:category",
+            "dest": "dist/routes/productServiceRoute.js"
+        },
+        {
+            "src": "/product/show-product/:name",
+            "dest": "dist/routes/productServiceRoute.js"
+        },
+        {
+            "src": "/product/all-categories",
+            "dest": "dist/routes/productServiceRoute.js"
+        },
+        {
+            "src": "/cart/create",
+            "dest": "dist/routes/cartRoute.js"
+        },
+        {
+            "src": "/cart/add-product",
+            "dest": "dist/routes/cartRoute.js"
+        },
+        {
+            "src": "/cart/update-cart-status/:id",
+            "dest": "dist/routes/cartRoute.js"
+        },
+        {
+            "src": "/cart/update-product-quantity",
+            "dest": "dist/routes/cartRoute.js"
+        },
+        {
+            "src": "/cart/delete/:id'",
+            "dest": "dist/routes/cartRoute.js"
+        },
+        {
+            "src": "/cart/show-cart/:id'",
+            "dest": "dist/routes/cartServiceRoute.js"
+        },
+        {
+            "src": "/cart/products-in-cart/:id'",
+            "dest": "dist/routes/cartServiceRoute.js"
+        },
+        {
+            "src": "/cart/show-product-cart'",
+            "dest": "dist/routes/cartServiceRoute.js"
+        },
+        {
+            "src": "/cart/count-products-in-cart/:id''",
+            "dest": "dist/routes/cartServiceRoute.js"
         }
+        
     ]
 }

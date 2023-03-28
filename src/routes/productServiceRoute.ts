@@ -11,4 +11,8 @@ productServiceRouter.get('/category/:category', productsByCategory);
 productServiceRouter.get('/show-product/:name', productByName);
 productServiceRouter.get('/all-categories', allProductCategories);
 
+productServiceRouter.get('/happy', (_req, res) => {
+  res.json({Message: "Thank God"})
+})
+
 export default productServiceRouter;

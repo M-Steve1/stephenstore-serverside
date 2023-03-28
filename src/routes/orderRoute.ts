@@ -5,4 +5,8 @@ const orderRouter = express.Router();
 
 orderRouter.post('/create-order/:id', idAuth, createOrder);
 
+orderRouter.get('/happy', (_req, res) => {
+    res.json({Message: "Thank God"})
+  })
+
 export default orderRouter;
