@@ -38,7 +38,7 @@ describe('User model', () => {
   });
 
   it('Show method should return specified(id) user', async () => {
-    const result = await userStore.show('1');
+    const result = await userStore.show(1);
     // @ts-ignore
     expect(result).toEqual({
       id: 1,

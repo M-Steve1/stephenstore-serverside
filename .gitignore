@@ -2,4 +2,3 @@ node_modules
 .env
 database.json
 dist
-src/tests

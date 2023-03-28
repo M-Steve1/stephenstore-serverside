@@ -27,7 +27,7 @@ describe('Product model', () => {
     ]);
   });
   it('Should return the specified(id) product', async () => {
-    const result = await productStore.show('1');
+    const result = await productStore.show(1);
     expect(result).toEqual({
       id: 1,
       name: 'ps5',
