@@ -1,7 +1,7 @@
 {
   "name": "project-storefront-backend",
   "version": "1.0.0",
-  "description": "Udacity Project",
+  "description": "Api for an e-commerce app",
   "main": "server.js",
   "scripts": {
     "prettier": "prettier --config .prettierrc \"src/**/*.ts\" --write",

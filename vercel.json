@@ -11,6 +11,10 @@
         {
             "src": "/(.*)",
             "dest": "dist/server.js"
+        },
+        {
+            "src": "/user(.*)",
+            "dest": "dist/routes/userRoute.js"
         }
     ]
 }
