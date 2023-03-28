@@ -39,3 +39,4 @@ describe('Product route', () => {
             .expect(201);
     }));
 });
+//# sourceMappingURL=productRouteSpec.js.map

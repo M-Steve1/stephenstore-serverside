@@ -31,3 +31,4 @@ const tokenAuth = (req, res, next) => __awaiter(void 0, void 0, void 0, function
     }
 });
 exports.tokenAuth = tokenAuth;
+//# sourceMappingURL=tokenAuth.js.map

@@ -14,3 +14,4 @@ cartRoute.put('/update-cart-status/:id', idAuth_1.idAuth, cartController_1.updat
 cartRoute.put('/update-product-quantity', tokenAuth_1.tokenAuth, cartController_1.updateProductQuantity);
 cartRoute.delete('/delete/:id', tokenAuth_1.tokenAuth, cartController_1.removeItemFromCart);
 exports.default = cartRoute;
+//# sourceMappingURL=cartRoute.js.map

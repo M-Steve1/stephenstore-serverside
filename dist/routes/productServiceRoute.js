@@ -10,3 +10,4 @@ productServiceRouter.get('/category/:category', productServiceController_1.produ
 productServiceRouter.get('/show-product/:name', productServiceController_1.productByName);
 productServiceRouter.get('/all-categories', productServiceController_1.allProductCategories);
 exports.default = productServiceRouter;
+//# sourceMappingURL=productServiceRoute.js.map

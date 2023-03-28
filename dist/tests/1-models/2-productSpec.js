@@ -63,3 +63,4 @@ describe('Product model', () => {
         });
     }));
 });
+//# sourceMappingURL=2-productSpec.js.map

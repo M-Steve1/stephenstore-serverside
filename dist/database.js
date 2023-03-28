@@ -14,3 +14,4 @@ else {
     client = (0, supabase_js_1.createClient)(supabaseUrlTest, supabaseAnonKeyTest);
 }
 exports.default = client;
+//# sourceMappingURL=database.js.map

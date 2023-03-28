@@ -30,3 +30,4 @@ app.get('/happy', (_req, res) => {
     res.json({ Message: "Thank God" });
 });
 exports.default = app;
+//# sourceMappingURL=server.js.map

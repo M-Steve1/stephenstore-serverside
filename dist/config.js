@@ -35,3 +35,4 @@ exports.default = {
     saltRounds: process.env['SALTROUNDS'],
     jwtSecret: process.env['JWTSECRET']
 };
+//# sourceMappingURL=config.js.map

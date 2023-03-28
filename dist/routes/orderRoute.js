@@ -9,3 +9,4 @@ const idAuth_1 = require("../middleware/idAuth");
 const orderRouter = express_1.default.Router();
 orderRouter.post('/create-order/:id', idAuth_1.idAuth, orderController_1.createOrder);
 exports.default = orderRouter;
+//# sourceMappingURL=orderRoute.js.map

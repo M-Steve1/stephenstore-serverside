@@ -37,3 +37,4 @@ describe('Product service route', () => {
         expect(response.statusCode).toBe(200);
     }));
 });
+//# sourceMappingURL=productServiceRouteSpec.js.map

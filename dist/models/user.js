@@ -102,3 +102,4 @@ class UserStore {
     }
 }
 exports.UserStore = UserStore;
+//# sourceMappingURL=user.js.map

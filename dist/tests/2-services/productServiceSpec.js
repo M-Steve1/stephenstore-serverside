@@ -60,3 +60,4 @@ describe('Produce service', () => {
             }]);
     }));
 });
+//# sourceMappingURL=productServiceSpec.js.map

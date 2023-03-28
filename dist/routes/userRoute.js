@@ -13,3 +13,4 @@ userRouter.get('/show/:id', idAuth_1.idAuth, userController_1.getUserById);
 userRouter.post('/signup', userController_1.createUser);
 userRouter.post('/signin', userController_1.authenticate);
 exports.default = userRouter;
+//# sourceMappingURL=userRoute.js.map

@@ -232,3 +232,4 @@ exports.data = [
         rating: { rate: 3.6, count: 145 }
     }
 ];
+//# sourceMappingURL=data.js.map

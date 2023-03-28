@@ -54,3 +54,4 @@ const allProductCategories = (req, res) => __awaiter(void 0, void 0, void 0, fun
     }
 });
 exports.allProductCategories = allProductCategories;
+//# sourceMappingURL=productServiceController.js.map

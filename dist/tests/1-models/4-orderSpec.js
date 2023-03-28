@@ -29,3 +29,4 @@ describe('Order model', () => {
         });
     }));
 });
+//# sourceMappingURL=4-orderSpec.js.map

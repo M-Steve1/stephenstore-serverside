@@ -38,3 +38,4 @@ const idAuth = (req, res, next) => __awaiter(void 0, void 0, void 0, function* (
     }
 });
 exports.idAuth = idAuth;
+//# sourceMappingURL=idAuth.js.map

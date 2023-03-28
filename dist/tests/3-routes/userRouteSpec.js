@@ -73,3 +73,4 @@ describe('User route', () => {
             .expect(400);
     }));
 });
+//# sourceMappingURL=userRouteSpec.js.map

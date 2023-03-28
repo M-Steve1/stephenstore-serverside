@@ -11,3 +11,4 @@ productRouter.get('/index', productController_1.index);
 productRouter.get('/show/:id', productController_1.getProductById);
 productRouter.post('/create', tokenAuth_1.tokenAuth, productController_1.create);
 exports.default = productRouter;
+//# sourceMappingURL=productRoute.js.map

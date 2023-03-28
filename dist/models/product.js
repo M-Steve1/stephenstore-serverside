@@ -67,3 +67,4 @@ class ProductStore {
     }
 }
 exports.ProductStore = ProductStore;
+//# sourceMappingURL=product.js.map
