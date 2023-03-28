@@ -23,11 +23,5 @@ app.use('/cart', cartRoute_1.default, cartServiceRoute_1.default);
 app.listen(3000, () => {
     console.log(`Listen on ${address}`);
 });
-app.get('/', (_req, res) => {
-    res.json({ Message: "Working right, cool!" });
-});
-app.get('/happy', (_req, res) => {
-    res.json({ Message: "Thank God" });
-});
 exports.default = app;
 //# sourceMappingURL=server.js.map

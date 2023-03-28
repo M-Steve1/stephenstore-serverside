@@ -41,7 +41,7 @@ export class ProductStore {
     try {
       const { data, error, status} = await client
       .from("products")
-      .insert({name: p.name, price: p.price, category: p.category.toLowerCase(), url: p.url, description: p.description})
+      .insert({name: p.name.toLowerCase(), price: p.price, category: p.category.toLowerCase(), url: p.url, description: p.description})
       .select();
 
       if (data !== null) return data[0] as Product;
