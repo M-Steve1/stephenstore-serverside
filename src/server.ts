@@ -22,7 +22,11 @@ app.listen(3000, () => {
   console.log(`Listen on ${address}`);
 });
 
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.json({Message: "Working right, cool!"})
+})
+
+app.get('/happy', (_req, res) => {
+  res.json({Message: "Thank God"})
 })
 export default app
