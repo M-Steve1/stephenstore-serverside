@@ -1,23 +1,21 @@
-import client  from '../database';
+import client from '../database';
 import { hashSync, compare } from 'bcrypt';
 import envVariables from '../config';
 
 const { pepper, saltRounds } = envVariables;
 
 export type User = {
-  id?: number,
-  first_name: string,
-  last_name: string,
-  user_name: string,
-  password: string
+  id?: number;
+  first_name: string;
+  last_name: string;
+  user_name: string;
+  password: string;
 };
 
 export class UserStore {
   async index(): Promise<User[]> {
     try {
-      const { data, error, status } = await client
-      .from('users')
-      .select();
+      const { data, error, status } = await client.from('users').select();
       return data as User[];
     } catch (error) {
       throw new Error(`Cannot fetch users ${error}`);
@@ -32,16 +30,20 @@ export class UserStore {
       );
       // fName and lName to lowercase to allow naming consistency
       const { data, error, status } = await client
-      .from('users')
-      .insert({first_name: u.first_name.toLowerCase(), last_name: u.last_name.toLowerCase(), user_name: u.user_name, password: hashedPassword})
-      .select()
-      .single();
+        .from('users')
+        .insert({
+          first_name: u.first_name.toLowerCase(),
+          last_name: u.last_name.toLowerCase(),
+          user_name: u.user_name,
+          password: hashedPassword
+        })
+        .select()
+        .single();
 
       if (data !== null) {
-        delete data.password
+        delete data.password;
         return data as User;
       } else return null;
-      
     } catch (error) {
       throw new Error(`Cannot create user ${error}`);
     }
@@ -49,12 +51,12 @@ export class UserStore {
 
   async show(id: number): Promise<User | null> {
     try {
-      const { data, error, status} = await client
-      .from("users")
-      .select()
-      .eq('id', id)
-      .single();
-      
+      const { data, error, status } = await client
+        .from('users')
+        .select()
+        .eq('id', id)
+        .single();
+
       if (data !== null) {
         delete data.password;
         return data as User;
@@ -64,12 +66,15 @@ export class UserStore {
     }
   }
 
-  async authenticate(user_name: string, password: string): Promise<User | null> {
+  async authenticate(
+    user_name: string,
+    password: string
+  ): Promise<User | null> {
     try {
-      const { data, error, status} = await client
-      .from('users')
-      .select()
-      .eq('user_name', user_name);
+      const { data, error, status } = await client
+        .from('users')
+        .select()
+        .eq('user_name', user_name);
 
       if (data !== null) {
         const user = data[0];

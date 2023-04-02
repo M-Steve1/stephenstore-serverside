@@ -21,9 +21,7 @@ class UserStore {
     index() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { data, error, status } = yield database_1.default
-                    .from('users')
-                    .select();
+                const { data, error, status } = yield database_1.default.from('users').select();
                 return data;
             }
             catch (error) {
@@ -38,7 +36,12 @@ class UserStore {
                 // fName and lName to lowercase to allow naming consistency
                 const { data, error, status } = yield database_1.default
                     .from('users')
-                    .insert({ first_name: u.first_name.toLowerCase(), last_name: u.last_name.toLowerCase(), user_name: u.user_name, password: hashedPassword })
+                    .insert({
+                    first_name: u.first_name.toLowerCase(),
+                    last_name: u.last_name.toLowerCase(),
+                    user_name: u.user_name,
+                    password: hashedPassword
+                })
                     .select()
                     .single();
                 if (data !== null) {
@@ -57,7 +60,7 @@ class UserStore {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { data, error, status } = yield database_1.default
-                    .from("users")
+                    .from('users')
                     .select()
                     .eq('id', id)
                     .single();

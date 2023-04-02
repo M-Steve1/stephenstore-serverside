@@ -1,54 +1,54 @@
 // Use to populate the data base with products
 
 export const data = [
-    {
-        id: 1,
-        name: 'Book',
-        price: 9.99,
-        url: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-        category: 'Education',
-        description: 'You can read it!'
-      },
-      {
-        id: 2,
-        name: 'Headphones',
-        price: 249.99,
-        url: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-        category: "electronics",
-        description: 'Listen to stuff!'
-      },
-      {
-        id: 3,
-        name: 'Backpack',
-        price: 79.99,
-        url: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-        category: "men's clothing",
-        description: 'Carry things around town!'
-      },
-      {
-        id: 4,
-        name: 'Glasses',
-        price: 129.99,
-        url: 'https://images.unsplash.com/photo-1591076482161-42ce6da69f67?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-        category: 'eye wear',
-        description: 'Now you can see!'
-      },
-      {
-        id: 5,
-        name: 'Cup',
-        price: 4.99,
-        url: 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-        category: 'utensils',
-        description: 'Drink anything with it!'
-      },
-      {
-        id: 6,
-        name: 'Shirt',
-        price: 29.99,
-        url: 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80',
-        category: "men's clothing",
-        description: 'Wear it with style!'
-      },
+  {
+    id: 1,
+    name: 'Book',
+    price: 9.99,
+    url: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    category: 'Education',
+    description: 'You can read it!'
+  },
+  {
+    id: 2,
+    name: 'Headphones',
+    price: 249.99,
+    url: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    category: 'electronics',
+    description: 'Listen to stuff!'
+  },
+  {
+    id: 3,
+    name: 'Backpack',
+    price: 79.99,
+    url: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    category: "men's clothing",
+    description: 'Carry things around town!'
+  },
+  {
+    id: 4,
+    name: 'Glasses',
+    price: 129.99,
+    url: 'https://images.unsplash.com/photo-1591076482161-42ce6da69f67?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    category: 'eye wear',
+    description: 'Now you can see!'
+  },
+  {
+    id: 5,
+    name: 'Cup',
+    price: 4.99,
+    url: 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    category: 'utensils',
+    description: 'Drink anything with it!'
+  },
+  {
+    id: 6,
+    name: 'Shirt',
+    price: 29.99,
+    url: 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80',
+    category: "men's clothing",
+    description: 'Wear it with style!'
+  },
   {
     id: 1,
     name: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
@@ -66,8 +66,7 @@ export const data = [
     description:
       'Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.',
     category: "men's clothing",
-    url:
-      'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
+    url: 'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
     rating: { rate: 4.1, count: 259 }
   },
   {
@@ -92,8 +91,7 @@ export const data = [
   },
   {
     id: 5,
-    name:
-      "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
+    name: "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
     price: 695,
     description:
       "From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.",
@@ -153,8 +151,7 @@ export const data = [
   },
   {
     id: 11,
-    name:
-      'Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5',
+    name: 'Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5',
     price: 109,
     description:
       '3D NAND flash are applied to deliver high transfer speeds Remarkable transfer speeds that enable faster bootup and improved overall system performance. The advanced SLC Cache Technology allows performance boost and longer lifespan 7mm slim design suitable for Ultrabooks and Ultra-slim notebooks. Supports TRIM command, Garbage Collection technology, RAID, and ECC (Error Checking & Correction) to provide the optimized performance and enhanced reliability.',
@@ -164,8 +161,7 @@ export const data = [
   },
   {
     id: 12,
-    name:
-      'WD 4TB Gaming Drive Works with Playstation 4 Portable External Hard Drive',
+    name: 'WD 4TB Gaming Drive Works with Playstation 4 Portable External Hard Drive',
     price: 114,
     description:
       "Expand your PS4 gaming experience, Play anywhere Fast and easy, setup Sleek design with high capacity, 3-year manufacturer's limited warranty",
@@ -185,8 +181,7 @@ export const data = [
   },
   {
     id: 14,
-    name:
-      'Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED ',
+    name: 'Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED ',
     price: 999.99,
     description:
       '49 INCH SUPER ULTRAWIDE 32:9 CURVED GAMING MONITOR with dual 27 inch screen side by side QUANTUM DOT (QLED) TECHNOLOGY, HDR support and factory calibration provides stunningly realistic and accurate color and contrast 144HZ HIGH REFRESH RATE and 1ms ultra fast response time work to eliminate motion blur, ghosting, and reduce input lag',
@@ -206,8 +201,7 @@ export const data = [
   },
   {
     id: 16,
-    name:
-      "Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket",
+    name: "Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket",
     price: 29.95,
     description:
       '100% POLYURETHANE(shell) 100% POLYESTER(lining) 75% POLYESTER 25% COTTON (SWEATER), Faux leather material for style and comfort / 2 pockets of front, 2-For-One Hooded denim style faux leather jacket, Button detail on waist / Detail stitching at sides, HAND WASH ONLY / DO NOT BLEACH / LINE DRY / DO NOT IRON',

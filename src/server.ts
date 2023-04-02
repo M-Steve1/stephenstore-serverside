@@ -16,10 +16,10 @@ app.use(bodyParser.json());
 app.use('/user', userRouter);
 app.use('/product', productRouter, productServiceRouter);
 app.use('/order', orderRouter);
-app.use('/cart', cartRoute, cartServiceRoute)
+app.use('/cart', cartRoute, cartServiceRoute);
 
 app.listen(3000, () => {
   console.log(`Listen on ${address}`);
 });
 
-export default app
+export default app;

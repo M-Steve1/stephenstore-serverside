@@ -1,7 +1,13 @@
-import  express  from "express";
-import { addProductsToCart, create, removeItemFromCart, updateCartStatus, updateProductQuantity } from "../controllers/cartController";
-import { idAuth } from "../middleware/idAuth";
-import { tokenAuth } from "../middleware/tokenAuth";
+import express from 'express';
+import {
+  addProductsToCart,
+  create,
+  removeItemFromCart,
+  updateCartStatus,
+  updateProductQuantity
+} from '../controllers/cartController';
+import { idAuth } from '../middleware/idAuth';
+import { tokenAuth } from '../middleware/tokenAuth';
 
 const cartRoute = express.Router();
 
@@ -12,4 +18,3 @@ cartRoute.put('/update-product-quantity', tokenAuth, updateProductQuantity);
 cartRoute.delete('/delete/:id', tokenAuth, removeItemFromCart);
 
 export default cartRoute;
-

@@ -52,7 +52,13 @@ const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             const createdUser = yield userStore.create(user);
             const payload = { userId: createdUser === null || createdUser === void 0 ? void 0 : createdUser.id };
             const token = yield userService.createToken(payload);
-            res.status(201).json({ token: token, userId: createdUser === null || createdUser === void 0 ? void 0 : createdUser.id, userName: createdUser === null || createdUser === void 0 ? void 0 : createdUser.user_name });
+            res
+                .status(201)
+                .json({
+                token: token,
+                userId: createdUser === null || createdUser === void 0 ? void 0 : createdUser.id,
+                userName: createdUser === null || createdUser === void 0 ? void 0 : createdUser.user_name
+            });
         }
     }
     catch (error) {
@@ -66,7 +72,13 @@ const authenticate = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         const signedInUser = yield userStore.authenticate(user_name, password);
         const payload = { userId: signedInUser === null || signedInUser === void 0 ? void 0 : signedInUser.id };
         const token = yield userService.createToken(payload);
-        res.status(200).json({ token: token, userId: signedInUser === null || signedInUser === void 0 ? void 0 : signedInUser.id, userName: signedInUser === null || signedInUser === void 0 ? void 0 : signedInUser.user_name });
+        res
+            .status(200)
+            .json({
+            token: token,
+            userId: signedInUser === null || signedInUser === void 0 ? void 0 : signedInUser.id,
+            userName: signedInUser === null || signedInUser === void 0 ? void 0 : signedInUser.user_name
+        });
     }
     catch (error) {
         res.status(400).json(`${error}`);

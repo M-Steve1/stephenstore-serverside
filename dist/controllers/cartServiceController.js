@@ -19,7 +19,7 @@ const getCartByUserId = (req, res) => __awaiter(void 0, void 0, void 0, function
         res.status(200).json(cart);
     }
     catch (error) {
-        res.status(400).json("Something went wrong");
+        res.status(400).json('Something went wrong');
     }
 });
 exports.getCartByUserId = getCartByUserId;
@@ -52,7 +52,7 @@ const countProductsInCart = (req, res) => __awaiter(void 0, void 0, void 0, func
         res.status(200).json(result);
     }
     catch (error) {
-        res.status(400).json("Something went wrong");
+        res.status(400).json('Something went wrong');
     }
 });
 exports.countProductsInCart = countProductsInCart;

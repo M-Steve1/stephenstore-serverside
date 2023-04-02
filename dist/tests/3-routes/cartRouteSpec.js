@@ -17,14 +17,14 @@ const supertest_1 = __importDefault(require("supertest"));
 const userService_1 = require("../../services/userService");
 const request = (0, supertest_1.default)(server_1.default);
 const userService = new userService_1.UserService();
-describe("Cart Route", () => {
+describe('Cart Route', () => {
     it('Expects /cart/create endpoint to return 201 statusCode', () => __awaiter(void 0, void 0, void 0, function* () {
         const token = yield userService.createToken({ userId: 1 });
         yield request
             .post('/cart/create')
             .set('Authorization', 'bearer ' + token)
             .send({
-            status: "active",
+            status: 'active',
             user_id: 1
         })
             .expect(201);
@@ -47,7 +47,7 @@ describe("Cart Route", () => {
             .put(`/cart/update-cart-status/1`)
             .set('Authorization', 'bearer ' + token)
             .send({
-            cartStatus: "completed"
+            cartStatus: 'completed'
         })
             .expect(200);
     }));

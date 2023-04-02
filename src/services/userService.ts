@@ -1,4 +1,4 @@
-import  client  from '../database';
+import client from '../database';
 import jwt from 'jsonwebtoken';
 import env from '../config';
 
@@ -7,14 +7,14 @@ const { jwtSecret } = env;
 export class UserService {
   async isUserNameTaken(user_name: string): Promise<boolean | null> {
     try {
-      const { data, error, status} = await client
-      .from('users')
-      .select("user_name")
-      .eq("user_name", user_name);
+      const { data, error, status } = await client
+        .from('users')
+        .select('user_name')
+        .eq('user_name', user_name);
 
       if (data !== null) {
-        if (data.length === 0) return false
-        else return true
+        if (data.length === 0) return false;
+        else return true;
       } else {
         return null;
       }

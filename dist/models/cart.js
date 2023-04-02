@@ -19,8 +19,11 @@ class CartStore {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { data, error, status } = yield database_1.default
-                    .from("carts")
-                    .insert({ user_id: parseInt(cart.user_id), status: cart.status.toLowerCase() })
+                    .from('carts')
+                    .insert({
+                    user_id: parseInt(cart.user_id),
+                    status: cart.status.toLowerCase()
+                })
                     .select();
                 if (data !== null)
                     return data[0];
@@ -36,7 +39,7 @@ class CartStore {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { data, error, status } = yield database_1.default
-                    .from("carts")
+                    .from('carts')
                     .update({ status: cart.status.toLowerCase() })
                     .match({ user_id: cart.user_id, status: 'active' })
                     .select();
@@ -54,8 +57,12 @@ class CartStore {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { data, error, status } = yield database_1.default
-                    .from("cart_products")
-                    .insert({ cart_id: parseInt(productToAdd.cart_id), product_id: parseInt(productToAdd.product_id), product_quantity: productToAdd.product_quantity })
+                    .from('cart_products')
+                    .insert({
+                    cart_id: parseInt(productToAdd.cart_id),
+                    product_id: parseInt(productToAdd.product_id),
+                    product_quantity: productToAdd.product_quantity
+                })
                     .select();
                 if (data !== null)
                     return data[0];
@@ -71,9 +78,9 @@ class CartStore {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { data, error, status } = yield database_1.default
-                    .from("cart_products")
+                    .from('cart_products')
                     .update({ product_quantity: quantity })
-                    .eq("id", id)
+                    .eq('id', id)
                     .select();
                 if (data !== null)
                     return data[0];
@@ -89,9 +96,9 @@ class CartStore {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { data, error, status } = yield database_1.default
-                    .from("cart_products")
+                    .from('cart_products')
                     .delete()
-                    .eq("id", id)
+                    .eq('id', id)
                     .select();
                 if (data !== null)
                     return data[0];

@@ -13,16 +13,16 @@ const cartService_1 = require("../../services/cartService");
 const cart_1 = require("../../models/cart");
 const cartStore = new cart_1.CartStore();
 const cartServiceStore = new cartService_1.CartServiceStore();
-describe("Cart Service", () => {
+describe('Cart Service', () => {
     beforeAll(() => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield cartStore.create({
             user_id: 1,
-            status: "active"
+            status: 'active'
         });
         expect(result).toEqual({
             id: 2,
             user_id: 1,
-            status: "active"
+            status: 'active'
         });
     }));
     it('getCartByUserId method should be defined', () => {
@@ -42,15 +42,15 @@ describe("Cart Service", () => {
         expect(result).not.toEqual({
             id: 1,
             user_id: 1,
-            status: "completed"
+            status: 'completed'
         });
         expect(result).toEqual({
             id: 2,
             user_id: 1,
-            status: "active"
+            status: 'active'
         });
     }));
-    it("Should return product if in cart", () => __awaiter(void 0, void 0, void 0, function* () {
+    it('Should return product if in cart', () => __awaiter(void 0, void 0, void 0, function* () {
         const isProductInCart = yield cartServiceStore.isProductInCart(2, 1);
         expect(isProductInCart).not.toEqual({
             id: 2,
@@ -73,12 +73,14 @@ describe("Cart Service", () => {
     }));
     afterAll(() => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield cartServiceStore.getProductsInCart(2);
-        expect(result).toEqual([{
+        expect(result).toEqual([
+            {
                 id: 2,
                 cart_id: 2,
                 product_id: 1,
                 product_quantity: 2
-            }]);
+            }
+        ]);
         const count = yield cartServiceStore.countProductsInCart(2);
         expect(count).toEqual({ count: 1 });
         const countTwo = yield cartServiceStore.countProductsInCart(1);

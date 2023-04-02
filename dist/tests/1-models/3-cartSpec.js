@@ -11,16 +11,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const cart_1 = require("../../models/cart");
 const cartStore = new cart_1.CartStore();
-describe("Cart Model", () => {
+describe('Cart Model', () => {
     beforeAll(() => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield cartStore.create({
             user_id: 1,
-            status: "active"
+            status: 'active'
         });
         expect(result).toEqual({
             id: 1,
             user_id: 1,
-            status: "active"
+            status: 'active'
         });
     }));
     it('create method should be defined', () => {
@@ -55,12 +55,12 @@ describe("Cart Model", () => {
         const resultOne = yield cartStore.updateCartStatus({
             id: 1,
             user_id: 1,
-            status: "completed"
+            status: 'completed'
         });
         expect(resultOne).toEqual({
             id: 1,
             user_id: 1,
-            status: "completed"
+            status: 'completed'
         });
         const resultTwo = yield cartStore.updateProductQuantity(1, 5);
         expect(resultTwo).toEqual({

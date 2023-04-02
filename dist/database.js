@@ -7,7 +7,7 @@ const supabase_js_1 = require("@supabase/supabase-js");
 const config_1 = __importDefault(require("./config"));
 const { supabaseUrl, supabaseAnonKey, supabaseUrlTest, supabaseAnonKeyTest, env } = config_1.default;
 let client;
-if (env === "dev") {
+if (env === 'dev') {
     client = (0, supabase_js_1.createClient)(supabaseUrl, supabaseAnonKey);
 }
 else {

@@ -27,10 +27,10 @@ describe('Product model', () => {
             {
                 id: 1,
                 name: 'ps5',
-                price: 25.60,
+                price: 25.6,
                 category: 'games',
-                url: "http://games.com",
-                description: "Can take your whole day"
+                url: 'http://games.com',
+                description: 'Can take your whole day'
             }
         ]);
     }));
@@ -39,27 +39,27 @@ describe('Product model', () => {
         expect(result).toEqual({
             id: 1,
             name: 'ps5',
-            price: 25.60,
+            price: 25.6,
             category: 'games',
-            url: "http://games.com",
-            description: "Can take your whole day"
+            url: 'http://games.com',
+            description: 'Can take your whole day'
         });
     }));
     beforeAll(() => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield productStore.create({
             name: 'ps5',
-            price: 25.60,
+            price: 25.6,
             category: 'games',
-            url: "http://games.com",
-            description: "Can take your whole day"
+            url: 'http://games.com',
+            description: 'Can take your whole day'
         });
         expect(result).toEqual({
             id: 1,
             name: 'ps5',
-            price: 25.60,
+            price: 25.6,
             category: 'games',
-            url: "http://games.com",
-            description: "Can take your whole day"
+            url: 'http://games.com',
+            description: 'Can take your whole day'
         });
     }));
 });

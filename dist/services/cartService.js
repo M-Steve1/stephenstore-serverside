@@ -19,7 +19,7 @@ class CartServiceStore {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { data, error, status } = yield database_1.default
-                    .from("carts")
+                    .from('carts')
                     .select()
                     .match({ user_id: user_id, status: 'active' });
                 if (data !== null)
@@ -36,7 +36,7 @@ class CartServiceStore {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { data, error, status } = yield database_1.default
-                    .from("cart_products")
+                    .from('cart_products')
                     .select()
                     .match({ cart_id: cart_id, product_id: product_id });
                 if (data !== null)
@@ -53,9 +53,9 @@ class CartServiceStore {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { data, error, status } = yield database_1.default
-                    .from("cart_products")
+                    .from('cart_products')
                     .select()
-                    .eq("cart_id", cart_id);
+                    .eq('cart_id', cart_id);
                 if (data !== null)
                     return data;
                 else

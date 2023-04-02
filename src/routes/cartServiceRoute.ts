@@ -1,7 +1,12 @@
-import  express  from "express";
-import { countProductsInCart, getCartByUserId, getProductsInCart, isProductInCart } from "../controllers/cartServiceController";
-import { idAuth } from "../middleware/idAuth";
-import { tokenAuth } from "../middleware/tokenAuth";
+import express from 'express';
+import {
+  countProductsInCart,
+  getCartByUserId,
+  getProductsInCart,
+  isProductInCart
+} from '../controllers/cartServiceController';
+import { idAuth } from '../middleware/idAuth';
+import { tokenAuth } from '../middleware/tokenAuth';
 
 const cartServiceRoute = express.Router();
 
@@ -11,7 +16,10 @@ cartServiceRoute.get('/products-in-cart/:id', tokenAuth, getProductsInCart);
     This is post because it has a body used for getting the product needed
 */
 cartServiceRoute.post('/show-product-cart', tokenAuth, isProductInCart);
-cartServiceRoute.get('/count-products-in-cart/:id', tokenAuth, countProductsInCart);
+cartServiceRoute.get(
+  '/count-products-in-cart/:id',
+  tokenAuth,
+  countProductsInCart
+);
 
 export default cartServiceRoute;
-

@@ -23,8 +23,8 @@ class UserService {
             try {
                 const { data, error, status } = yield database_1.default
                     .from('users')
-                    .select("user_name")
-                    .eq("user_name", user_name);
+                    .select('user_name')
+                    .eq('user_name', user_name);
                 if (data !== null) {
                     if (data.length === 0)
                         return false;

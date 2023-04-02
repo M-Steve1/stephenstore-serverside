@@ -20,7 +20,11 @@ class OrderStore {
             try {
                 const { data, error, status } = yield database_1.default
                     .from('orders')
-                    .insert({ user_id: order.user_id, cart_id: order.cart_id, status: order.status.toLowerCase() })
+                    .insert({
+                    user_id: order.user_id,
+                    cart_id: order.cart_id,
+                    status: order.status.toLowerCase()
+                })
                     .select()
                     .single();
                 if (data !== null)

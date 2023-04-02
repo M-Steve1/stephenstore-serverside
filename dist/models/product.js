@@ -18,9 +18,7 @@ class ProductStore {
     index() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { data, error, status } = yield database_1.default
-                    .from("products")
-                    .select();
+                const { data, error, status } = yield database_1.default.from('products').select();
                 if (data !== null)
                     return data;
                 else
@@ -35,9 +33,9 @@ class ProductStore {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { data, error, status } = yield database_1.default
-                    .from("products")
+                    .from('products')
                     .select()
-                    .eq("id", id);
+                    .eq('id', id);
                 if (data !== null)
                     return data[0];
                 else
@@ -52,8 +50,14 @@ class ProductStore {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { data, error, status } = yield database_1.default
-                    .from("products")
-                    .insert({ name: p.name.toLowerCase(), price: p.price, category: p.category.toLowerCase(), url: p.url, description: p.description })
+                    .from('products')
+                    .insert({
+                    name: p.name.toLowerCase(),
+                    price: p.price,
+                    category: p.category.toLowerCase(),
+                    url: p.url,
+                    description: p.description
+                })
                     .select();
                 if (data !== null)
                     return data[0];

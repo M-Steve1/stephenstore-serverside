@@ -21,7 +21,7 @@ const create = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(201).json(createdCart);
     }
     catch (error) {
-        res.status(400).json("Could not create cart");
+        res.status(400).json('Could not create cart');
     }
 });
 exports.create = create;
@@ -37,7 +37,7 @@ const updateCartStatus = (req, res) => __awaiter(void 0, void 0, void 0, functio
         res.status(200).json(updatedCart);
     }
     catch (error) {
-        res.status(400).json("Could not update cart");
+        res.status(400).json('Could not update cart');
     }
 });
 exports.updateCartStatus = updateCartStatus;
@@ -45,17 +45,22 @@ const addProductsToCart = (req, res) => __awaiter(void 0, void 0, void 0, functi
     try {
         const { cart_id, product_id, product_quantity } = req.body;
         const isProductInCart = yield cartService.isProductInCart(parseInt(cart_id), parseInt(product_id));
-        if (isProductInCart === null || isProductInCart === undefined) {
-            const addedProduct = yield cartStore.addProductsToCart({ cart_id, product_id, product_quantity });
+        if (isProductInCart === null) {
+            const addedProduct = yield cartStore.addProductsToCart({
+                cart_id,
+                product_id,
+                product_quantity
+            });
             res.status(200).json(addedProduct);
         }
         else {
-            const updatedProduct = yield cartStore.updateProductQuantity(parseInt(isProductInCart.id), parseInt(isProductInCart.product_quantity) + parseInt(product_quantity));
+            const updatedProduct = yield cartStore.updateProductQuantity(parseInt(isProductInCart.id), parseInt(isProductInCart.product_quantity) +
+                parseInt(product_quantity));
             res.status(200).json(updatedProduct);
         }
     }
     catch (error) {
-        res.status(400).json("Could not add Product to cart");
+        res.status(400).json('Could not add Product to cart');
     }
 });
 exports.addProductsToCart = addProductsToCart;
@@ -66,7 +71,7 @@ const updateProductQuantity = (req, res) => __awaiter(void 0, void 0, void 0, fu
         res.status(200).json(updatedProduct);
     }
     catch (error) {
-        res.status(400).json("Could not update product quantity");
+        res.status(400).json('Could not update product quantity');
     }
 });
 exports.updateProductQuantity = updateProductQuantity;
@@ -77,7 +82,7 @@ const removeItemFromCart = (req, res) => __awaiter(void 0, void 0, void 0, funct
         res.status(200).json(deletedProduct);
     }
     catch (error) {
-        res.status(400).json("Could not delete item from cart");
+        res.status(400).json('Could not delete item from cart');
     }
 });
 exports.removeItemFromCart = removeItemFromCart;

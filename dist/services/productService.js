@@ -36,9 +36,9 @@ class ProductService {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { data, error, status } = yield database_1.default
-                    .from("products")
+                    .from('products')
                     .select()
-                    .like("name", `%${productName.toLowerCase()}%`);
+                    .like('name', `%${productName.toLowerCase()}%`);
                 if (data !== null)
                     return data;
                 else
