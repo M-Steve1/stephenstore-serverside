@@ -73,7 +73,7 @@
             "dest": "dist/routes/cartServiceRoute.js"
         },
         {
-            "src": "/cart/show-product-cart'",
+            "src": "/cart/show-product-in-cart'",
             "dest": "dist/routes/cartServiceRoute.js"
         },
         {

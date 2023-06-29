@@ -15,7 +15,7 @@ cartServiceRoute.get('/products-in-cart/:id', tokenAuth, getProductsInCart);
 /* 
     This is post because it has a body used for getting the product needed
 */
-cartServiceRoute.post('/show-product-cart', tokenAuth, isProductInCart);
+cartServiceRoute.post('/show-product-in-cart', tokenAuth, isProductInCart);
 cartServiceRoute.get(
   '/count-products-in-cart/:id',
   tokenAuth,

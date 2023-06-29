@@ -13,7 +13,7 @@ cartServiceRoute.get('/products-in-cart/:id', tokenAuth_1.tokenAuth, cartService
 /*
     This is post because it has a body used for getting the product needed
 */
-cartServiceRoute.post('/show-product-cart', tokenAuth_1.tokenAuth, cartServiceController_1.isProductInCart);
+cartServiceRoute.post('/show-product-in-cart', tokenAuth_1.tokenAuth, cartServiceController_1.isProductInCart);
 cartServiceRoute.get('/count-products-in-cart/:id', tokenAuth_1.tokenAuth, cartServiceController_1.countProductsInCart);
 exports.default = cartServiceRoute;
 //# sourceMappingURL=cartServiceRoute.js.map

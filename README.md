@@ -221,7 +221,7 @@ After cloning the repository run the command below
 #### Show Product In Cart
 
 ```http
-  POST https://stephenstore-serverside.vercel.app/cart/show-product-in-cart/:id
+  POST https://stephenstore-serverside.vercel.app/cart/show-product-in-cart
 ```
 
 | Parameter                 | Type     | Description                                         | Return Type             |
