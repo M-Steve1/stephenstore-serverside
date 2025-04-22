@@ -20,6 +20,9 @@ app.use('/user', userRoute_1.default);
 app.use('/product', productRoute_1.default, productServiceRoute_1.default);
 app.use('/order', orderRoute_1.default);
 app.use('/cart', cartRoute_1.default, cartServiceRoute_1.default);
+app.get("/", (req, res) => {
+    res.status(200).json({ Message: "Up and Running" });
+});
 app.listen(3000, () => {
     console.log(`Listen on ${address}`);
 });
